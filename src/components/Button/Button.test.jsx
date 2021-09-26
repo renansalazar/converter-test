@@ -3,14 +3,14 @@ import {render, screen} from '@testing-library/react';
 import Button from './Button';
 
 describe('button component', () => {
-    test('event onclick dispatch function', () => {
+    test('text in button', () => {
       render(
         <Button data-testid="converterButton" />
       )
 
       const el = screen.queryByTestId("converterButton")
 
-      expect(el).toHaveTextContent("Convertir")
+      expect(el.textContent).toEqual("Convertir")
 
       /*       
         const {queryByLabelText, getByLabelText} = render(

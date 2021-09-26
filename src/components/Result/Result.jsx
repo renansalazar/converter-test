@@ -1,9 +1,16 @@
 import React from 'react'
+import {formatearNumero} from '../../utils/formatedNumber'
 
-function Result () {
+function Result ({valueConverter, chance}) {
 
-    return (
-        <p>Ingrese un valor y presione Convertir</p>
+    return (<div data-testid="converterResult" className='containerResult'>
+        {
+            chance===0 ? 
+                <p>Ingrese un valor y presione Convertir</p>
+            :
+                <p>{formatearNumero(valueConverter)}</p>
+        }
+    </div>
     )
 
 }

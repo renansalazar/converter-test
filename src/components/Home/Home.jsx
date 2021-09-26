@@ -1,19 +1,38 @@
-import React from "react";
+import React, {useState} from "react";
 import Button from '../Button'
-import Input from '../Input'
 import Result from '../Result'
-import Logo from '../../assets/img/logotf.png'
+import {getConverter} from '../../services/converter'
 
 const Home = () => {
-  
+    const [valueConvert, setValueConvert] = useState(0)
+    const [valueInput, setValueInput] = useState('0')
+    const [chance, setChance] = useState(0)
+
+    const converter = () => {
+      getConverter(valueInput).then(valueNew=>{
+        setValueConvert(valueNew)
+        setChance((prev)=>prev+1)
+      })
+    }
+
     return (
-        <>
-            <img src={Logo} alt="#" width="100px" height="100px" />
-            <h1>Bienvenido a Converter Test</h1>
-            <Input />
-            <Button />
-            <Result />
-        </>
+      <div className='container'>
+        <div className='content'>
+          <h1>Convertidor de Soles a Dolares</h1>
+          <input 
+            data-testid="converterInput" 
+            type="number" 
+            placeholder="Ingresar Texto"
+            value={valueInput}
+            onChange={(e)=>setValueInput(e.target.value)}
+          />
+          <Button 
+            handleClick={converter}
+            disabled={valueInput==='0' || valueInput===''}
+          />
+          <Result valueConverter={valueConvert} chance={chance} />
+        </div>
+      </div>
     )
 
 };

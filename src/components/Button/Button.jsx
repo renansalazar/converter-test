@@ -1,9 +1,14 @@
 import React from 'react'
 
-function Button () {
-
+function Button ({handleClick, disabled}) {
     return (
-        <button data-testid="converterButton">Convertir</button>
+        <button 
+            data-testid="converterButton" 
+            onClick={handleClick}
+            disabled={disabled}
+        >
+            Convertir
+        </button>
     )
 
 }

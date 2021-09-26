@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --env=jsdom",
     "build": "webpack --mode production",
     "dev": "webpack --mode development",
     "start": "webpack serve --history-api-fallback --open --mode development"
@@ -17,6 +17,8 @@
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
+    "axios": "^0.21.4",
+    "axios-mock-adapter": "^1.20.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
